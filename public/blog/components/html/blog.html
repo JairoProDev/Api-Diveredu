@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="blog-style.css">
+</head>
+<body>
+  <article class="blog-post">
+    <h1 class="blog-post__title">Título de la entrada</h1>
+    <div class="blog-post__meta">
+      Publicado el <time datetime="2022-01-01">1 de enero de 2022</time> por <a href="#" class="blog-post__author">Jairo Pro-Dev</a>
+    </div>
+    <div class="blog-post__content">
+      <p>Contenido de la entrada</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero maiores recusandae nemo exercitationem dolore! Inventore in asperiores unde tempora repellat esse! Ducimus quas aperiam temporibus exercitationem odit? Labore, id sapiente?</p>
+      <img src="imagen.jpg" alt="Título de la imagen" class="blog-post__image">
+    </div>
+    <button class="blog-post__comment-button">Ver comentarios</button>
+    <div class="blog-post__comments" hidden>
+      <h2>Comentarios</h2>
+      <form class="blog-post__comment-form">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" required>
+        <label for="comment">Comentario:</label>
+        <textarea id="comment" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <div class="blog-post__comment">
+        <h3>Nombre del comentarista</h3>
+        <p>Comentario</p>
+      </div>
+    </div>
+  </article>
+
+</body>
+</html>

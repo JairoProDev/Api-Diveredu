@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/form-style.css">
+</head>
+<body>
+    <!-- <form id="upload-form">
+        <label for="title">Título:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Descripción:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="tags">Etiquetas:</label><br>
+        <input type="text" id="tags" name="tags"><br>
+        <label for="video">Archivo de video:</label><br>
+        <input type="file" id="video" name="video"><br><br>
+        <button type="submit">Subir video</button>
+      </form>  -->
+      
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="title">Título</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="description">Descripción</label>
+        <textarea id="description" name="description" required></textarea>
+        <br>
+        <label for="tags">Etiquetas (separadas por comas)</label>
+        <input type="text" id="tags" name="tags" required>
+        <br>
+        <label for="video">Video</label>
+        <input type="file" id="video" name="video" required>
+        <br>
+        <input type="submit" value="Subir video">
+      </form>
+
+      <script>
+        // Evitar que el formulario se envíe y recargue la página
+        document.querySelector('form').addEventListener('submit', function(event) {
+          event.preventDefault();
+      
+          // Obtener los valores de los inputs
+          var title = document.getElementById('title').value;
+          var description = document.getElementById('description').value;
+          var tags = document.getElementById('tags').value.split(',');
+          var video = document.getElementById('video').files[0];
+      
+          // Validar los datos
+          if (!title || !description || !tags || !video) {
+            alert('Todos los campos son obligatorios');
+            return;
+          }
+      
+          // Crear un objeto FormData para enviar los datos a través de AJAX
+          var data = new FormData();
+          data.append('title', title);
+          data.append('description', description);
+          data.append('tags', tags);
+          data.append('video', video);
+      
+          // Enviar los datos a través de AJAX
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/upload', true);
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              alert('Video subido correctamente');
+            } else {
+              alert('Error al subir el video');
+            }
+          };
+          xhr.send(data);
+        });
+      </script>
+</body>
+</html>
